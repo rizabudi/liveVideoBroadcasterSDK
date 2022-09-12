@@ -1,3 +1,1 @@
-include ':liveVideoBroadcasterSDK'
-include ':app'
-rootProject.name = "LiveVideoBroadcasterSample"
+include ':app', ':liveVideoBroadcasterSDK'
