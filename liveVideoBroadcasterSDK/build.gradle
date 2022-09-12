@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'net.butterflytv.utils:rtmp-client:3.1.0'
+    implementation 'com.android.support:support-annotations:31.0.0'
+    implementation 'com.android.support:design:31.0.0'
+    implementation 'com.gauravk.audiovisualizer:audiovisualizer:0.9.2'
+    testImplementation 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.diginiq-team'
+            artifactId = 'liveVideoBroadcasterSDK'
+            version = "1.0.5"
+
+            pom {
+                description = 'A description of my library'
+            }
+        }
+    }
+}
